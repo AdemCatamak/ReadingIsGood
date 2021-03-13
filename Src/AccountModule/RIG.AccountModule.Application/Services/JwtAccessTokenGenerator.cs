@@ -11,9 +11,9 @@ namespace RIG.AccountModule.Application.Services
 {
     public class JwtAccessTokenGenerator : IAccessTokenGenerator
     {
-        public const string JWT_KEY = "RIGCustomJwtKey";
-        public const string JWT_ISSUER = "RIGJwtIssuer";
-        public const string JWT_AUDIENCE = "RIGJwtIssuer";
+        public const string JWT_KEY = "ReadingIsGoodCustomJwtKey";
+        public const string JWT_ISSUER = "ReadingIsGoodJwtIssuer";
+        public const string JWT_AUDIENCE = "ReadingIsGoodAudience";
 
         public AccessToken Generate(AccountId accountId)
         {

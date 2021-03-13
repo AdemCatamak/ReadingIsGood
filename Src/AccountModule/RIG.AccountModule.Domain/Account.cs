@@ -9,10 +9,10 @@ namespace RIG.AccountModule.Domain
 {
     public class Account
     {
-        public AccountId Id { get; private set; }
-        public Username Username { get; private set; }
-        public PasswordHash PasswordHash { get; private set; }
-        public Name Name { get; private set; }
+        public AccountId Id { get; private set; } = null!;
+        public Username Username { get; private set; } = null!;
+        public PasswordHash PasswordHash { get; private set; } = null!;
+        public Name Name { get; private set; } = null!;
 
         private Account()
         {
@@ -42,6 +42,15 @@ namespace RIG.AccountModule.Domain
             PasswordHash passwordHash = passwordHasher.Hash(password);
             Account account = new Account(username, passwordHash, name);
             return account;
+        }
+
+        public AccessToken CreateAccessToken(Password password, IPasswordHasher passwordHasher, IAccessTokenGenerator accessTokenGenerator)
+        {
+            PasswordHash passwordHash = passwordHasher.Hash(password, PasswordHash.Salt);
+            if (!Equals(PasswordHash, passwordHash)) throw new PasswordNotMatchException(Username, password);
+
+            AccessToken accessToken = accessTokenGenerator.Generate(Id);
+            return accessToken;
         }
     }
 }
