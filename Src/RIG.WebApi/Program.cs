@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using MessageStorage.Configurations;
+using MessageStorage.DataAccessSection;
+using MessageStorage.SqlServer.Migrations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -77,6 +80,11 @@ namespace RIG.WebApi
                 {
                     migrationEngine.MigrateUp();
                 }
+
+                var appDbConfig = provider.GetRequiredService<AppDbConfig>();
+                var repositoryConfiguration = new MessageStorageRepositoryContextConfiguration(appDbConfig.ConnectionStr);
+                IMessageStorageMigrationRunner messageStorageMigrationRunner = new SqlServerMessageStorageMigrationRunner();
+                messageStorageMigrationRunner.MigrateUp(repositoryConfiguration);
             }
         }
 
@@ -104,9 +112,8 @@ namespace RIG.WebApi
                                                        .ConfigureAppConfiguration((hostingContext, config) =>
                                                                                   {
                                                                                       config.AddJsonFile("appsettings.json");
-                                                                                      if(hostingContext.HostingEnvironment.IsDevelopment())
+                                                                                      if (hostingContext.HostingEnvironment.IsDevelopment())
                                                                                           config.AddJsonFile("appsettings.dev.json");
-
                                                                                   })
                                                        .ConfigureLogging((host, logging) =>
                                                                          {

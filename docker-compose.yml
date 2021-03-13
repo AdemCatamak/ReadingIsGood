@@ -24,3 +24,9 @@ services:
       SA_PASSWORD: "Passw0rd"
     expose:
       - 1433  
+
+  rig-rabbit-mq:
+    image: rabbitmq:3.7.21
+    expose:
+      - 5672
+  

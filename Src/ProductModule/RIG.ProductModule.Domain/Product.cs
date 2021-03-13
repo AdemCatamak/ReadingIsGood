@@ -1,10 +1,12 @@
 ﻿using System;
+using RIG.ProductModule.Domain.DomainEvents;
 using RIG.ProductModule.Domain.Exceptions;
 using RIG.ProductModule.Domain.ValueObjects;
+using RIG.Shared.Domain;
 
 namespace RIG.ProductModule.Domain
 {
-    public class Product
+    public class Product : DomainEventHolder
     {
         public ProductId Id { get; private set; }
         public string ProductName { get; private set; }
@@ -26,8 +28,9 @@ namespace RIG.ProductModule.Domain
         {
             productName = productName?.Trim() ?? string.Empty;
             if (string.IsNullOrEmpty(productName)) throw new ProductNameEmptyException();
-
             Product product = new Product(productName);
+            ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent(product);
+            product.AddDomainEvent(productCreatedEvent);
             return product;
         }
     }
