@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{04322903-EC5F-4595-966E-BEE959D90CE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{612788B5-D984-4FE9-B687-7D6357E3AD5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIG.Shared.Infrastructure", "Src\Shared\RIG.Shared.Infrastructure\RIG.Shared.Infrastructure.csproj", "{654FE5C8-33F0-42D6-BEE2-28EC1C192E09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIG.Shared.Domain", "Src\Shared\RIG.Shared.Domain\RIG.Shared.Domain.csproj", "{FF1EFFBE-CC2E-4728-98A9-213C62F5FC6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildFiles", "BuildFiles", "{3B970636-0558-422B-8D43-11EB618DC6B2}"
+ProjectSection(SolutionItems) = preProject
+	docker-compose-test.yml = docker-compose-test.yml
+	docker-compose.yml = docker-compose.yml
+	docker-rig.Dockerfile = docker-rig.Dockerfile
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AccountModule", "AccountModule", "{41DCE247-96A8-4D53-B1C3-33F9C6E8C2D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIG.AccountModule.Domain", "Src\AccountModule\RIG.AccountModule.Domain\RIG.AccountModule.Domain.csproj", "{C8B3043F-7AC4-42A8-91EB-8F2EBD6067CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIG.AccountModule.Infrastructure", "Src\AccountModule\RIG.AccountModule.Infrastructure\RIG.AccountModule.Infrastructure.csproj", "{06532F93-DAAF-43F9-83D9-A13DF1D0C090}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIG.AccountModule.Application", "Src\AccountModule\RIG.AccountModule.Application\RIG.AccountModule.Application.csproj", "{0397F79F-032F-4D39-AB16-F16E900F39C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIG.WebApi", "Src\RIG.WebApi\RIG.WebApi.csproj", "{CD889A89-347F-449A-A507-2CEC34BC5E7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConfigFiles", "ConfigFiles", "{31FCBF9D-50EF-4178-A411-2FD2B280D177}"
+ProjectSection(SolutionItems) = preProject
+	.gitattributes = .gitattributes
+	.gitignore = .gitignore
+	Directory.Build.props = Directory.Build.props
+EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{612788B5-D984-4FE9-B687-7D6357E3AD5B} = {04322903-EC5F-4595-966E-BEE959D90CE2}
+		{654FE5C8-33F0-42D6-BEE2-28EC1C192E09} = {612788B5-D984-4FE9-B687-7D6357E3AD5B}
+		{FF1EFFBE-CC2E-4728-98A9-213C62F5FC6E} = {612788B5-D984-4FE9-B687-7D6357E3AD5B}
+		{41DCE247-96A8-4D53-B1C3-33F9C6E8C2D8} = {04322903-EC5F-4595-966E-BEE959D90CE2}
+		{C8B3043F-7AC4-42A8-91EB-8F2EBD6067CC} = {41DCE247-96A8-4D53-B1C3-33F9C6E8C2D8}
+		{06532F93-DAAF-43F9-83D9-A13DF1D0C090} = {41DCE247-96A8-4D53-B1C3-33F9C6E8C2D8}
+		{0397F79F-032F-4D39-AB16-F16E900F39C6} = {41DCE247-96A8-4D53-B1C3-33F9C6E8C2D8}
+		{CD889A89-347F-449A-A507-2CEC34BC5E7F} = {04322903-EC5F-4595-966E-BEE959D90CE2}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{654FE5C8-33F0-42D6-BEE2-28EC1C192E09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{654FE5C8-33F0-42D6-BEE2-28EC1C192E09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{654FE5C8-33F0-42D6-BEE2-28EC1C192E09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{654FE5C8-33F0-42D6-BEE2-28EC1C192E09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF1EFFBE-CC2E-4728-98A9-213C62F5FC6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF1EFFBE-CC2E-4728-98A9-213C62F5FC6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF1EFFBE-CC2E-4728-98A9-213C62F5FC6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF1EFFBE-CC2E-4728-98A9-213C62F5FC6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8B3043F-7AC4-42A8-91EB-8F2EBD6067CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8B3043F-7AC4-42A8-91EB-8F2EBD6067CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8B3043F-7AC4-42A8-91EB-8F2EBD6067CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8B3043F-7AC4-42A8-91EB-8F2EBD6067CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06532F93-DAAF-43F9-83D9-A13DF1D0C090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06532F93-DAAF-43F9-83D9-A13DF1D0C090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06532F93-DAAF-43F9-83D9-A13DF1D0C090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06532F93-DAAF-43F9-83D9-A13DF1D0C090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0397F79F-032F-4D39-AB16-F16E900F39C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0397F79F-032F-4D39-AB16-F16E900F39C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0397F79F-032F-4D39-AB16-F16E900F39C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0397F79F-032F-4D39-AB16-F16E900F39C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD889A89-347F-449A-A507-2CEC34BC5E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD889A89-347F-449A-A507-2CEC34BC5E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD889A89-347F-449A-A507-2CEC34BC5E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD889A89-347F-449A-A507-2CEC34BC5E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

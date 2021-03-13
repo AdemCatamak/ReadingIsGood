@@ -1,0 +1,13 @@
+version: "3.4"
+
+services:
+
+  rig-sql-server:
+    image: mcr.microsoft.com/mssql/server:2017-CU14-ubuntu
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Passw0rd"
+    expose:
+      - 1433
+    ports:
+      - 31433:1433
