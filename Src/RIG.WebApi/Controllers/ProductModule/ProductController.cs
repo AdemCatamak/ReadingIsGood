@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RIG.ProductModule.Application.Commands;
 using RIG.ProductModule.Domain.ValueObjects;
+using RIG.Shared.Domain.Pagination;
 using RIG.Shared.Infrastructure;
 using RIG.WebApi.Controllers.ProductModule.Requests;
 
@@ -41,6 +42,19 @@ namespace RIG.WebApi.Controllers.ProductModule
             var deleteProductCommand = new DeleteProductCommand(new ProductId(productId));
             await _executionContext.ExecuteAsync(deleteProductCommand, CancellationToken.None);
             return StatusCode((int) HttpStatusCode.OK);
+        }
+
+        [HttpGet]
+        [ProducesResponseType((int) HttpStatusCode.OK)]
+        public async Task<IActionResult> GetProducts([FromQuery] GetProductCollectionHttpRequest? getProductCollectionHttpRequest)
+        {
+            QueryProductCommand queryProductCommand = new QueryProductCommand
+                                                      {
+                                                          Limit = getProductCollectionHttpRequest?.Limit ?? 20,
+                                                          Offset = getProductCollectionHttpRequest?.Offset ?? 0
+                                                      };
+            PaginatedCollection<ProductResponse> paginatedCollection = await _executionContext.ExecuteAsync(queryProductCommand, CancellationToken.None);
+            return StatusCode((int) HttpStatusCode.OK, paginatedCollection);
         }
     }
 }
