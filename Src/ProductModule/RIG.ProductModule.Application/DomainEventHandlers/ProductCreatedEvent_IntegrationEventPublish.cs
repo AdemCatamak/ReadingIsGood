@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using RIG.ProductModule.Application.IntegrationEvents;
@@ -21,7 +22,8 @@ namespace RIG.ProductModule.Application.DomainEventHandlers
         {
             Product product = notification.Product;
             ProductCreatedIntegrationEvent productCreatedIntegrationEvent = new ProductCreatedIntegrationEvent(product.Id.Value.ToString(),
-                                                                                                               product.ProductName);
+                                                                                                               product.ProductName,
+                                                                                                               product.CreatedOn);
 
             await _outboxClient.AddAsync(productCreatedIntegrationEvent, cancellationToken);
         }

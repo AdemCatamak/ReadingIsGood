@@ -15,17 +15,23 @@ namespace RIG.AccountModule.Infrastructure.Db.EntityConfigurations
                    .HasConversion(id => id.Value,
                                   s => new AccountId(s));
 
-
             builder.OwnsOne(m => m.Username)
                    .Property(username => username.Value)
                    .HasColumnName("Username");
-            builder.OwnsOne(m => m.PasswordHash);
+            builder.OwnsOne(m => m.PasswordHash)
+                   .Property(hash => hash.Hash)
+                   .HasColumnName("PasswordHash_Hash");
+            builder.OwnsOne(m => m.PasswordHash)
+                   .Property(hash => hash.Salt)
+                   .HasColumnName("PasswordHash_Salt");
             builder.OwnsOne(m => m.Name)
                    .Property(name => name.FirstName)
                    .HasColumnName("FirstName");
             builder.OwnsOne(m => m.Name)
                    .Property(name => name.LastName)
                    .HasColumnName("LastName");
+            builder.Property(account => account.Role)
+                   .HasColumnName("Role");
         }
     }
 }

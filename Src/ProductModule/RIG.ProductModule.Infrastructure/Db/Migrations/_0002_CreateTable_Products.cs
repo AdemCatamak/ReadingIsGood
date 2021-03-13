@@ -3,7 +3,7 @@ using FluentMigrator;
 namespace RIG.ProductModule.Infrastructure.Db.Migrations
 {
     [Migration(2)]
-    public class _0002_CreateTable_Accounts : Migration
+    public class _0002_CreateTable_Products : Migration
     {
         public override void Up()
         {
@@ -11,6 +11,8 @@ namespace RIG.ProductModule.Infrastructure.Db.Migrations
                   .WithColumn("Id").AsGuid().PrimaryKey()
                   .WithColumn("ProductName").AsString().NotNullable()
                   .WithColumn("CreatedOn").AsDateTime2().NotNullable().WithDefault(SystemMethods.CurrentUTCDateTime)
+                  .WithColumn("UpdatedOn").AsDateTime2().NotNullable().WithDefault(SystemMethods.CurrentUTCDateTime)
+                  .WithColumn("IsDeleted").AsBoolean().NotNullable().WithDefaultValue(false)
                 ;
         }
 
