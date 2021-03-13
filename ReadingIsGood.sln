@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIG.Shared.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIG.Shared.Domain", "Src\Shared\RIG.Shared.Domain\RIG.Shared.Domain.csproj", "{FF1EFFBE-CC2E-4728-98A9-213C62F5FC6E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildFiles", "BuildFiles", "{3B970636-0558-422B-8D43-11EB618DC6B2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DockerFiles", "DockerFiles", "{3B970636-0558-422B-8D43-11EB618DC6B2}"
 ProjectSection(SolutionItems) = preProject
 	docker-compose-test.yml = docker-compose-test.yml
 	docker-compose.yml = docker-compose.yml
@@ -30,6 +30,15 @@ ProjectSection(SolutionItems) = preProject
 	.gitattributes = .gitattributes
 	.gitignore = .gitignore
 	Directory.Build.props = Directory.Build.props
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildFiles", "BuildFiles", "{CCD7AA2F-CCC4-4C37-9A6F-577E0518DD4B}"
+ProjectSection(SolutionItems) = preProject
+	build.cake = build.cake
+	build.config = build.config
+	build.ps1 = build.ps1
+	build.sh = build.sh
+	.github\workflows\github.yml = .github\workflows\github.yml
 EndProjectSection
 EndProject
 Global

@@ -42,6 +42,8 @@ dlldata.c
 
 # Cake
 [Tt]ools/
+.dotnet/
+dotnet-published/
 
 # Publish
 [Pp]ublishes/
