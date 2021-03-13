@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using RIG.ProductModule.Application.Commands;
 using RIG.ProductModule.Domain;
 using RIG.ProductModule.Domain.Repositories;
-using RIG.ProductModule.Domain.ValueObjects;
 using RIG.Shared.Domain.DomainMessageBroker;
 
 namespace RIG.ProductModule.Application.CommandHandlers
