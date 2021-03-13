@@ -25,7 +25,7 @@ namespace RIG.AccountModule.Application.CommandHandlers
 
         public async Task<AccountId> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
         {
-            Account account = Account.Create(request.Username, request.Password, request.Name, _usernameUniqueChecker, _passwordHasher, cancellationToken);
+            Account account = Account.Create(request.Username, request.Password, request.Name, request.Role, _usernameUniqueChecker, _passwordHasher, cancellationToken);
 
             IAccountRepository accountRepository = _dbContext.AccountRepository;
             await accountRepository.AddAsync(account, cancellationToken);

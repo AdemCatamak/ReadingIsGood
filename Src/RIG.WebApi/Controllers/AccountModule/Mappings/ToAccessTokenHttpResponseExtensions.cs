@@ -1,7 +1,7 @@
 using RIG.AccountModule.Domain.ValueObjects;
-using RIG.WebApi.Controllers.Module.Responses;
+using RIG.WebApi.Controllers.AccountModule.Responses;
 
-namespace RIG.WebApi.Controllers.Module.Mappings
+namespace RIG.WebApi.Controllers.AccountModule.Mappings
 {
     public static class ToAccessTokenHttpResponseExtensions
     {

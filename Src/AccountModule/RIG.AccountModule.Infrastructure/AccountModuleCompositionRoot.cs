@@ -1,7 +1,6 @@
-using System.Linq;
-using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RIG.AccountModule.Application.CommandHandlers;
 using RIG.AccountModule.Application.Rules;
 using RIG.AccountModule.Application.Services;
 using RIG.AccountModule.Domain.Repositories;
@@ -20,7 +19,7 @@ namespace RIG.AccountModule.Infrastructure
     {
         public void Register(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDomainMessageBroker(GetType().Assembly.GetReferencedAssemblies().Select(Assembly.Load).ToArray());
+            services.AddDomainMessageBroker(typeof(CreateAccountCommandHandler).Assembly);
             services.AddSingleton<IEntityTypeConfigurationAssembly, AccountModuleTypeConfigurationAssembly>();
             services.AddSingleton<BaseDbMigrationEngine, AccountModuleMigrationRunner>();
             services.AddScoped<IAccountDbContext, AccountDbContext>();

@@ -6,8 +6,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Shared\RIG.Shared.Infrastructure\RIG.Shared.Infrastructure.csproj" />
-      <ProjectReference Include="..\RIG.AccountModule.Application\RIG.AccountModule.Application.csproj" />
-      <ProjectReference Include="..\RIG.AccountModule.Domain\RIG.AccountModule.Domain.csproj" />
+      <ProjectReference Include="..\RIG.ProductModule.Application\RIG.ProductModule.Application.csproj" />
+      <ProjectReference Include="..\RIG.ProductModule.Domain\RIG.ProductModule.Domain.csproj" />
     </ItemGroup>
 
 </Project>

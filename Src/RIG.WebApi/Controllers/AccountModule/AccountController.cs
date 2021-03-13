@@ -1,13 +1,15 @@
+using System;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using RIG.AccountModule.Application.Commands;
+using RIG.AccountModule.Domain;
 using RIG.AccountModule.Domain.ValueObjects;
 using RIG.Shared.Infrastructure;
-using RIG.WebApi.Controllers.Module.Requests;
+using RIG.WebApi.Controllers.AccountModule.Requests;
 
-namespace RIG.WebApi.Controllers.Module
+namespace RIG.WebApi.Controllers.AccountModule
 {
     [ApiController]
     [Route("accounts")]
@@ -21,11 +23,13 @@ namespace RIG.WebApi.Controllers.Module
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostAccount([FromBody] PostAccountHttpRequest postAccountHttpRequest)
+        [ProducesResponseType(typeof(Guid), (int) HttpStatusCode.Created)]
+        public async Task<IActionResult> PostAccount([FromBody] PostAccountHttpRequest? postAccountHttpRequest)
         {
             CreateAccountCommand createAccountCommand = new CreateAccountCommand(new Username(postAccountHttpRequest?.Username ?? string.Empty),
                                                                                  new Password(postAccountHttpRequest?.Password ?? string.Empty),
-                                                                                 new Name(postAccountHttpRequest?.FirstName ?? string.Empty, postAccountHttpRequest?.LastName ?? string.Empty));
+                                                                                 new Name(postAccountHttpRequest?.FirstName ?? string.Empty, postAccountHttpRequest?.LastName ?? string.Empty),
+                                                                                 Roles.User);
             AccountId accountId = await _executionContext.ExecuteAsync(createAccountCommand, CancellationToken.None);
 
             return StatusCode((int) HttpStatusCode.Created, accountId.Value);

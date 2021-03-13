@@ -1,12 +1,17 @@
 using System.Collections.Generic;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using RIG.AccountModule.Application.Services;
 using RIG.AccountModule.Infrastructure;
+using RIG.ProductModule.Infrastructure;
 using RIG.Shared.Infrastructure;
 using RIG.WebApi.Controllers;
 using RIG.WebApi.Middleware;
@@ -67,10 +72,32 @@ namespace RIG.WebApi
                                        c.CustomSchemaIds(type => type.ToString());
                                    });
 
+            #region Auth
 
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
+                                  options =>
+                                  {
+                                      options.RequireHttpsMetadata = false;
+                                      options.SaveToken = true;
+                                      options.TokenValidationParameters = new TokenValidationParameters
+                                                                          {
+                                                                              ValidateIssuer = true,
+                                                                              ValidateAudience = true,
+                                                                              ValidateLifetime = true,
+                                                                              ValidateIssuerSigningKey = true,
+                                                                              ValidIssuer = JwtAccessTokenGenerator.JWT_ISSUER,
+                                                                              ValidAudience = JwtAccessTokenGenerator.JWT_AUDIENCE,
+                                                                              IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtAccessTokenGenerator.JWT_KEY))
+                                                                          };
+                                  });
+
+            #endregion
+            
             CompositionRootRegisterer compositionRootRegisterer = new CompositionRootRegisterer(services, _configuration);
             compositionRootRegisterer.Registerer(new SharedCompositionRoot())
-                                     .Registerer(new AccountModuleCompositionRoot());
+                                     .Registerer(new AccountModuleCompositionRoot())
+                                     .Registerer(new ProductModuleCompositionRoot());
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

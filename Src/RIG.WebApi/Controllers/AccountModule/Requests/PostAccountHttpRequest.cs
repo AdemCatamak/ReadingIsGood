@@ -1,4 +1,4 @@
-namespace RIG.WebApi.Controllers.Module.Requests
+namespace RIG.WebApi.Controllers.AccountModule.Requests
 {
     public class PostAccountHttpRequest
     {
