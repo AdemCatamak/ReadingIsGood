@@ -1,0 +1,26 @@
+version: "3.4"
+
+services:
+
+  dropy-app:
+    image: rig:latest
+    build:
+      context: ./
+      dockerfile: docker-rig.Dockerfile
+    ports:
+      - 35000:80
+      - 5000:80
+    depends_on:
+      - rig-sql-server
+      - rig-rabbit-mq
+    links:
+      - rig-sql-server
+      - rig-rabbit-mq
+
+  rig-sql-server:
+    image: mcr.microsoft.com/mssql/server:2017-CU14-ubuntu
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Passw0rd"
+    expose:
+      - 1433  
