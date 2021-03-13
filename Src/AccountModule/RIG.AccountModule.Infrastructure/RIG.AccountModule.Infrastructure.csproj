@@ -5,13 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="FluentMigrator" Version="3.2.15" />
-      <PackageReference Include="FluentMigrator.Runner" Version="3.2.15" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.4" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\..\Shared\RIG.Shared.Infrastructure\RIG.Shared.Infrastructure.csproj" />
       <ProjectReference Include="..\RIG.AccountModule.Application\RIG.AccountModule.Application.csproj" />
       <ProjectReference Include="..\RIG.AccountModule.Domain\RIG.AccountModule.Domain.csproj" />

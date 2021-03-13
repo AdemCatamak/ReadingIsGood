@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
 
-namespace RIG.WebApi.Controllers.Module.Responses
+namespace RIG.WebApi.Controllers.AccountModule.Responses
 {
     public class AccessTokenHttpResponse
     {

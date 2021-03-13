@@ -16,7 +16,9 @@ namespace RIG.AccountModule.Infrastructure.Db.EntityConfigurations
                                   s => new AccountId(s));
 
 
-            builder.OwnsOne(m => m.Username);
+            builder.OwnsOne(m => m.Username)
+                   .Property(username => username.Value)
+                   .HasColumnName("Username");
             builder.OwnsOne(m => m.PasswordHash);
             builder.OwnsOne(m => m.Name)
                    .Property(name => name.FirstName)

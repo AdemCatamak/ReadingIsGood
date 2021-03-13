@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using RIG.AccountModule.Domain;
 using RIG.AccountModule.Domain.Services;
 using RIG.AccountModule.Domain.ValueObjects;
 
@@ -15,13 +16,14 @@ namespace RIG.AccountModule.Application.Services
         public const string JWT_ISSUER = "ReadingIsGoodJwtIssuer";
         public const string JWT_AUDIENCE = "ReadingIsGoodAudience";
 
-        public AccessToken Generate(AccountId accountId)
+        public AccessToken Generate(AccountId accountId, Roles role)
         {
             DateTime expireAt = DateTime.UtcNow.AddDays(1);
 
             Claim[] claims =
             {
-                new Claim(ClaimTypes.NameIdentifier, accountId.Value.ToString())
+                new Claim(ClaimTypes.NameIdentifier, accountId.Value.ToString()),
+                new Claim(ClaimTypes.Role, role.ToString())
             };
 
             string tokenValue = GenerateJwtToken(expireAt, claims);

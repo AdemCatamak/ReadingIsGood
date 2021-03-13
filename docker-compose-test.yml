@@ -11,3 +11,13 @@ services:
       - 1433
     ports:
       - 31433:1433
+
+  rig-rabbit-mq:
+    image: rabbitmq:3.7-management
+    expose:
+      - 15672
+      - 5672
+    ports:
+      - 45672:5672
+      - 55672:15672
+

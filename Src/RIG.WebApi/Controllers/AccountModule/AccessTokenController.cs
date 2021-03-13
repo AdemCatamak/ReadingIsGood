@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using RIG.AccountModule.Application.Commands;
 using RIG.AccountModule.Domain.ValueObjects;
 using RIG.Shared.Infrastructure;
-using RIG.WebApi.Controllers.Module.Mappings;
-using RIG.WebApi.Controllers.Module.Requests;
-using RIG.WebApi.Controllers.Module.Responses;
+using RIG.WebApi.Controllers.AccountModule.Mappings;
+using RIG.WebApi.Controllers.AccountModule.Requests;
+using RIG.WebApi.Controllers.AccountModule.Responses;
 
-namespace RIG.WebApi.Controllers.Module
+namespace RIG.WebApi.Controllers.AccountModule
 {
     [Route("access-tokens")]
     [ApiController]
@@ -24,9 +24,9 @@ namespace RIG.WebApi.Controllers.Module
 
         [HttpPost]
         [ProducesResponseType(typeof(AccessTokenHttpResponse), (int) HttpStatusCode.Created)]
-        public async Task<IActionResult> PostAccessToken([FromBody] PostAccessTokenHttpRequest postAccessTokenHttpRequest)
+        public async Task<IActionResult> PostAccessToken([FromBody] PostAccessTokenHttpRequest? postAccessTokenHttpRequest)
         {
-            var createAccessTokenCommand = new CreateAccessTokenCommand(new Username(postAccessTokenHttpRequest.Username ?? string.Empty),
+            var createAccessTokenCommand = new CreateAccessTokenCommand(new Username(postAccessTokenHttpRequest?.Username ?? string.Empty),
                                                                         new Password(postAccessTokenHttpRequest?.Password ?? string.Empty));
             AccessToken accessToken = await _executionContext.ExecuteAsync(createAccessTokenCommand, CancellationToken.None);
             AccessTokenHttpResponse accessTokenHttpResponse = accessToken.ToAccessTokenHttpResponse();
