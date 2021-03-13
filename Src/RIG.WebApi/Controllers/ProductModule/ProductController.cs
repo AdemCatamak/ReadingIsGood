@@ -32,5 +32,15 @@ namespace RIG.WebApi.Controllers.ProductModule
             ProductId productId = await _executionContext.ExecuteAsync(createProductCommand, CancellationToken.None);
             return StatusCode((int) HttpStatusCode.Created, productId.Value);
         }
+
+        [HttpDelete("{productId}")]
+        [Authorize(Roles = "Admin")]
+        [ProducesResponseType((int) HttpStatusCode.OK)]
+        public async Task<IActionResult> DeleteProduct([FromRoute] Guid productId)
+        {
+            var deleteProductCommand = new DeleteProductCommand(new ProductId(productId));
+            await _executionContext.ExecuteAsync(deleteProductCommand, CancellationToken.None);
+            return StatusCode((int) HttpStatusCode.OK);
+        }
     }
 }

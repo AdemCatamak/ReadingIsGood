@@ -4,10 +4,11 @@ using RIG.AccountModule.Domain.Exceptions;
 using RIG.AccountModule.Domain.Rules;
 using RIG.AccountModule.Domain.Services;
 using RIG.AccountModule.Domain.ValueObjects;
+using RIG.Shared.Domain;
 
 namespace RIG.AccountModule.Domain
 {
-    public class Account
+    public class Account : DomainEventHolder
     {
         public AccountId Id { get; private set; } = null!;
         public Username Username { get; private set; } = null!;

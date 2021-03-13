@@ -7,14 +7,9 @@ namespace RIG.Shared.Domain
 {
     public abstract class DomainEventHolder
     {
-        private readonly ConcurrentQueue<IDomainEvent> _domainEvents;
+        private readonly ConcurrentQueue<IDomainEvent> _domainEvents = new ConcurrentQueue<IDomainEvent>();
 
         public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.ToList().AsReadOnly();
-
-        protected DomainEventHolder()
-        {
-            _domainEvents = new ConcurrentQueue<IDomainEvent>();
-        }
 
         protected void AddDomainEvent(IDomainEvent domainEvent)
         {

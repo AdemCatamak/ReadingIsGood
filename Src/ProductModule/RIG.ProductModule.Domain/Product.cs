@@ -11,17 +11,20 @@ namespace RIG.ProductModule.Domain
         public ProductId Id { get; private set; }
         public string ProductName { get; private set; }
         public DateTime CreatedOn { get; private set; }
+        public DateTime UpdatedOn { get; private set; }
+        public bool IsDeleted { get; private set; } = false;
 
         public Product(string productName)
-            : this(new ProductId(Guid.NewGuid()), productName, DateTime.UtcNow)
+            : this(new ProductId(Guid.NewGuid()), productName, DateTime.UtcNow, DateTime.UtcNow)
         {
         }
 
-        private Product(ProductId id, string productName, DateTime createdOn)
+        private Product(ProductId id, string productName, DateTime createdOn, DateTime updatedOn)
         {
             Id = id;
             ProductName = productName;
             CreatedOn = createdOn;
+            UpdatedOn = updatedOn;
         }
 
         public static Product Create(string productName)
@@ -32,6 +35,14 @@ namespace RIG.ProductModule.Domain
             ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent(product);
             product.AddDomainEvent(productCreatedEvent);
             return product;
+        }
+
+        public void SetDeleted()
+        {
+            IsDeleted = true;
+            UpdatedOn = DateTime.UtcNow;
+            ProductDeletedEvent productDeletedEvent = new ProductDeletedEvent(this);
+            AddDomainEvent(productDeletedEvent);
         }
     }
 }

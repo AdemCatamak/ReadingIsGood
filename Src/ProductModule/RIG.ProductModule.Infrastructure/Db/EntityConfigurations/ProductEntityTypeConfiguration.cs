@@ -14,6 +14,15 @@ namespace RIG.ProductModule.Infrastructure.Db.EntityConfigurations
             builder.Property(m => m.Id)
                    .HasConversion(id => id.Value,
                                   s => new ProductId(s));
+
+            builder.Property(product => product.ProductName)
+                   .HasColumnName("ProductName");
+
+            builder.Property(product => product.CreatedOn)
+                   .HasColumnName("CreatedOn");
+
+            builder.Property(product => product.IsDeleted)
+                   .HasColumnName("IsDeleted");
         }
     }
 }
