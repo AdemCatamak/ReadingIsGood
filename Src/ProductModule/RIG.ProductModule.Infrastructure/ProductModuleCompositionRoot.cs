@@ -18,7 +18,7 @@ namespace RIG.ProductModule.Infrastructure
             services.AddSingleton<IEntityTypeConfigurationAssembly, ProductModuleTypeConfigurationAssembly>();
             services.AddSingleton<BaseDbMigrationEngine, ProductModuleMigrationRunner>();
             services.AddScoped<IProductDbContext, ProductDbContext>();
-            services.AddDomainMessageBroker(typeof(CreateProductCommandHandler).Assembly);
+            services.AddDomainMessageBroker(typeof(CreateBookCommandHandler).Assembly);
         }
     }
 }

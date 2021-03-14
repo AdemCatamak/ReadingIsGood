@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIG.ProductModule.Applicati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIG.ProductModule.Infrastructure", "Src\ProductModule\RIG.ProductModule.Infrastructure\RIG.ProductModule.Infrastructure.csproj", "{1D2E79A8-1F42-4B7E-94F0-9165C9D31533}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIG.Shared.Specification", "Src\Shared\RIG.Shared.Specification\RIG.Shared.Specification.csproj", "{C717C945-223F-4AB1-8A3A-9114D4550121}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,7 @@ Global
 		{C23911C3-CEB4-409C-A8E6-C8EBEBFC0B73} = {AEF0B736-EB8B-4FAD-8D6E-188A1A2390AE}
 		{756640C6-5C0A-4C82-BAAB-3EDCB9860B25} = {AEF0B736-EB8B-4FAD-8D6E-188A1A2390AE}
 		{1D2E79A8-1F42-4B7E-94F0-9165C9D31533} = {AEF0B736-EB8B-4FAD-8D6E-188A1A2390AE}
+		{C717C945-223F-4AB1-8A3A-9114D4550121} = {612788B5-D984-4FE9-B687-7D6357E3AD5B}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{654FE5C8-33F0-42D6-BEE2-28EC1C192E09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -105,5 +108,9 @@ Global
 		{1D2E79A8-1F42-4B7E-94F0-9165C9D31533}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D2E79A8-1F42-4B7E-94F0-9165C9D31533}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D2E79A8-1F42-4B7E-94F0-9165C9D31533}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C717C945-223F-4AB1-8A3A-9114D4550121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C717C945-223F-4AB1-8A3A-9114D4550121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C717C945-223F-4AB1-8A3A-9114D4550121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C717C945-223F-4AB1-8A3A-9114D4550121}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

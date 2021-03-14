@@ -4,11 +4,11 @@ using RIG.Shared.Domain;
 
 namespace RIG.ProductModule.Domain.ValueObjects
 {
-    public class ProductId : ValueObject
+    public class BookId : ValueObject
     {
         public Guid Value { get; private set; }
 
-        public ProductId(Guid value)
+        public BookId(Guid value)
         {
             Value = value;
         }

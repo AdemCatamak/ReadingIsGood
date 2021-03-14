@@ -3,13 +3,14 @@ using FluentMigrator;
 namespace RIG.ProductModule.Infrastructure.Db.Migrations
 {
     [Migration(2)]
-    public class _0002_CreateTable_Products : Migration
+    public class _0002_CreateTable_Books : Migration
     {
         public override void Up()
         {
-            Create.Table("Products").InSchema("dbo.Product")
+            Create.Table("Books").InSchema("dbo.Book")
                   .WithColumn("Id").AsGuid().PrimaryKey()
-                  .WithColumn("ProductName").AsString().NotNullable()
+                  .WithColumn("BookName").AsString().NotNullable()
+                  .WithColumn("AuthorName").AsString().NotNullable()
                   .WithColumn("CreatedOn").AsDateTime2().NotNullable().WithDefault(SystemMethods.CurrentUTCDateTime)
                   .WithColumn("UpdatedOn").AsDateTime2().NotNullable().WithDefault(SystemMethods.CurrentUTCDateTime)
                   .WithColumn("IsDeleted").AsBoolean().NotNullable().WithDefaultValue(false)
@@ -18,7 +19,7 @@ namespace RIG.ProductModule.Infrastructure.Db.Migrations
 
         public override void Down()
         {
-            Delete.Table("Products").InSchema("dbo.Product");
+            Delete.Table("Books").InSchema("dbo.Book");
         }
     }
 }
