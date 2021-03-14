@@ -13,6 +13,6 @@ namespace RIG.ProductModule.Infrastructure.Db
             _appDbContext = appDbContext;
         }
 
-        public IProductRepository ProductRepository => new ProductRepository(_appDbContext);
+        public IBookRepository BookRepository => new BookRepository(_appDbContext);
     }
 }

@@ -5,7 +5,7 @@ namespace RIG.ProductModule.Infrastructure.Db.Migrations
     [VersionTableMetaData]
     public class _0001_VersionTable : IVersionTableMetaData
     {
-        public string SchemaName => "dbo.Product";
+        public string SchemaName => "dbo.Book";
         public string TableName => "VersionInfo";
         public string ColumnName => "Version";
         public string UniqueIndexName => "UC_Version";

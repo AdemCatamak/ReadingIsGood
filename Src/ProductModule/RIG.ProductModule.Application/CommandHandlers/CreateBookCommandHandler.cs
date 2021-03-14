@@ -8,21 +8,21 @@ using RIG.Shared.Domain.DomainMessageBroker;
 
 namespace RIG.ProductModule.Application.CommandHandlers
 {
-    public class CreateProductCommandHandler : IDomainCommandHandler<CreateProductCommand, ProductId>
+    public class CreateBookCommandHandler : IDomainCommandHandler<CreateBookCommand, BookId>
     {
         private readonly IProductDbContext _productDbContext;
 
-        public CreateProductCommandHandler(IProductDbContext productDbContext)
+        public CreateBookCommandHandler(IProductDbContext productDbContext)
         {
             _productDbContext = productDbContext;
         }
 
-        public async Task<ProductId> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+        public async Task<BookId> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
-            var product = Product.Create(request.ProductName);
+            var product = Book.Create(request.BookName, request.AuthorName);
 
-            IProductRepository productRepository = _productDbContext.ProductRepository;
-            await productRepository.AddAsync(product, cancellationToken);
+            IBookRepository bookRepository = _productDbContext.BookRepository;
+            await bookRepository.AddAsync(product, cancellationToken);
 
             return product.Id;
         }
