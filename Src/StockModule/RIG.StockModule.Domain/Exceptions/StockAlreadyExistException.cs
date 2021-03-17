@@ -1,4 +1,3 @@
-using System;
 using RIG.Shared.Domain.Exceptions;
 
 namespace RIG.StockModule.Domain.Exceptions

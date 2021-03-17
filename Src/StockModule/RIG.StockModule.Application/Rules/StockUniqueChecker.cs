@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using RIG.StockModule.Domain.Exceptions;
@@ -20,7 +19,7 @@ namespace RIG.StockModule.Application.Rules
         public async Task<bool> CheckAsync(string productId, CancellationToken cancellationToken)
         {
             var stockRepository = _stockDbContext.StockRepository;
-            var specification = new ProductIdIsSpecification(productId);
+            var specification = new ProductIdIs(productId);
 
             bool isUnique = false;
             try

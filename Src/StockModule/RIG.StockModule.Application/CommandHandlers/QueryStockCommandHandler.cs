@@ -27,7 +27,19 @@ namespace RIG.StockModule.Application.CommandHandlers
 
             if (!string.IsNullOrEmpty(request.ProductId))
             {
-                specification = specification.And(new ProductIdIsSpecification(request.ProductId));
+                specification = specification.And(new ProductIdIs(request.ProductId));
+            }
+
+            if (request.InStock.HasValue)
+            {
+                if (request.InStock.Value)
+                {
+                    specification = specification.And(new StockCountGreaterThan(0));
+                }
+                else
+                {
+                    specification = specification.And(new StockCountLessThan(1));
+                }
             }
 
             IStockRepository stockRepository = _stockDbContext.StockRepository;

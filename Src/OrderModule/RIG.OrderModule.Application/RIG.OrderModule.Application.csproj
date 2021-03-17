@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Shared\RIG.Shared.Domain\RIG.Shared.Domain.csproj"/>
+        <ProjectReference Include="..\RIG.OrderModule.Contracts\RIG.OrderModule.Contracts.csproj"/>
+        <ProjectReference Include="..\RIG.OrderModule.Domain\RIG.OrderModule.Domain.csproj"/>
+    </ItemGroup>
+
+</Project>
