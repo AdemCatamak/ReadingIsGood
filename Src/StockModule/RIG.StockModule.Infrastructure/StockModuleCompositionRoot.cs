@@ -10,7 +10,6 @@ using RIG.StockModule.Domain.Rules;
 using RIG.StockModule.Infrastructure.Db;
 using RIG.StockModule.Infrastructure.Db.EntityConfigurations;
 using RIG.StockModule.Infrastructure.Db.Migrations;
-using RIG.StockModule.Infrastructure.Db.Repositories;
 
 namespace RIG.StockModule.Infrastructure
 {

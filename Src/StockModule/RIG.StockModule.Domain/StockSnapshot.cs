@@ -1,6 +1,5 @@
 using System;
 using System.Threading;
-using System.Threading.Tasks;
 using RIG.Shared.Domain;
 using RIG.StockModule.Domain.Events;
 using RIG.StockModule.Domain.Exceptions;

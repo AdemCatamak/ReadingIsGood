@@ -13,7 +13,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using RIG.Shared.Domain;
 using RIG.Shared.Domain.Outbox;
 using RIG.Shared.Infrastructure.Db;
 using RIG.Shared.Infrastructure.DomainEventBroker;

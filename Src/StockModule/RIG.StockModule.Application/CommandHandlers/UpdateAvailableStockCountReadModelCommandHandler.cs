@@ -20,7 +20,7 @@ namespace RIG.StockModule.Application.CommandHandlers
 
         public async Task<bool> Handle(UpdateAvailableStockCountReadModelCommand request, CancellationToken cancellationToken)
         {
-            IExpressionSpecification<Stock> specification = new ProductIdIsSpecification(request.ProductId);
+            IExpressionSpecification<Stock> specification = new ProductIdIs(request.ProductId);
             var stockRepository = _stockDbContext.StockRepository;
             Stock stock = await stockRepository.GetFirstAsync(specification, cancellationToken);
 

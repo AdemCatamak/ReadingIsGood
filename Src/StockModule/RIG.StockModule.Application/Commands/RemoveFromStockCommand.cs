@@ -1,4 +1,3 @@
-using MediatR;
 using RIG.Shared.Domain.DomainMessageBroker;
 using RIG.StockModule.Domain.Exceptions;
 

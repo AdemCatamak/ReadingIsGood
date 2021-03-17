@@ -1,5 +1,3 @@
-using RIG.StockModule.Domain;
-
 namespace RIG.WebApi.Modules.StockModule.Controllers.Requests
 {
     public class ResetStockHttpRequest

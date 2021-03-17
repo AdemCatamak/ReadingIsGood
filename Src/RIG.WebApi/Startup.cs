@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using RIG.AccountModule.Application.Services;
 using RIG.AccountModule.Infrastructure;
+using RIG.OrderModule.Infrastructure;
 using RIG.ProductModule.Infrastructure;
 using RIG.Shared.Infrastructure;
 using RIG.Shared.Infrastructure.MassTransitComponents;
@@ -101,7 +102,9 @@ namespace RIG.WebApi
             compositionRootRegisterer.Registerer(new SharedCompositionRoot())
                                      .Registerer(new AccountModuleCompositionRoot())
                                      .Registerer(new ProductModuleCompositionRoot())
-                                     .Registerer(new StockModuleCompositionRoot());
+                                     .Registerer(new StockModuleCompositionRoot())
+                                     .Registerer(new OrderModuleCompositionRoot())
+                ;
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

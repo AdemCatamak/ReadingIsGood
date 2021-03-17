@@ -7,6 +7,7 @@ namespace RIG.StockModule.Application.Commands
                                      IDomainCommand<PaginatedCollection<StockResponse>>
     {
         public string? ProductId { get; set; }
+        public bool? InStock { get; set; }
     }
 
     public class StockResponse

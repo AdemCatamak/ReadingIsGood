@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using RIG.Shared.Domain.Pagination;
 using RIG.Shared.Infrastructure;
 using RIG.StockModule.Application.Commands;
+using RIG.WebApi.Modules.StockModule.Controllers.Requests;
 
 namespace RIG.WebApi.Modules.StockModule.Controllers
 {
@@ -22,17 +21,18 @@ namespace RIG.WebApi.Modules.StockModule.Controllers
             _executionContext = executionContext;
         }
 
-        [HttpGet("{productId}")]
-        public async Task<IActionResult> GetStocks([FromRoute] string productId)
+        [HttpGet("")]
+        public async Task<IActionResult> GetStocks([FromQuery] GetStockHttpRequest? getStockHttpRequest)
         {
-            QueryStockCommand queryStockCommand = new QueryStockCommand()
+            QueryStockCommand queryStockCommand = new QueryStockCommand
                                                   {
-                                                      ProductId = productId,
+                                                      ProductId = getStockHttpRequest?.ProductId,
+                                                      InStock = getStockHttpRequest?.InStock,
                                                       Offset = 0,
-                                                      Limit = 1
+                                                      Limit = 10
                                                   };
             PaginatedCollection<StockResponse> paginatedCollection = await _executionContext.ExecuteAsync(queryStockCommand, CancellationToken.None);
-            return StatusCode((int) HttpStatusCode.OK, paginatedCollection.Data.First());
+            return StatusCode((int) HttpStatusCode.OK, paginatedCollection);
         }
     }
 }
