@@ -49,7 +49,16 @@ namespace RIG.Shared.Infrastructure.Db
 
         private async Task PublishDomainEventsAsync(CancellationToken cancellationToken)
         {
-            List<DomainEventHolder> domainModels = ChangeTracker
+            while (TryRemoveDomainEvent(out IDomainEvent? domainEvent))
+            {
+                if (domainEvent == null) continue;
+                await _domainMessageBroker.PublishAsync(domainEvent, cancellationToken);
+            }
+        }
+
+        private bool TryRemoveDomainEvent(out IDomainEvent? domainEvent)
+        {
+            DomainEventHolder? domainEventHolder = ChangeTracker
                                                   .Entries()
                                                   .Where(entry => entry.Entity is DomainEventHolder)
                                                   .Select(entry =>
@@ -57,15 +66,15 @@ namespace RIG.Shared.Infrastructure.Db
                                                               var model = (DomainEventHolder) entry.Entity;
                                                               return model;
                                                           })
-                                                  .ToList();
+                                                  .FirstOrDefault(x => x.DomainEvents.Any());
 
-            foreach (DomainEventHolder domainModel in domainModels)
+            if (domainEventHolder == null)
             {
-                while (domainModel.TryRemoveDomainEvent(out IDomainEvent domainEvent))
-                {
-                    await _domainMessageBroker.PublishAsync(domainEvent, cancellationToken);
-                }
+                domainEvent = null;
+                return false;
             }
+
+            return domainEventHolder.TryRemoveDomainEvent(out domainEvent);
         }
     }
 }

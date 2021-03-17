@@ -9,7 +9,7 @@ namespace RIG.ProductModule.Infrastructure.Db.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<Book> builder)
         {
-            builder.ToTable("Books", "dbo.Book");
+            builder.ToTable("Books", "dbo.Product");
             builder.HasKey(m => m.Id);
             builder.Property(m => m.Id)
                    .HasConversion(id => id.Value,

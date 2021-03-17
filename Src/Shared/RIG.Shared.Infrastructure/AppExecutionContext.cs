@@ -36,7 +36,7 @@ namespace RIG.Shared.Infrastructure
 
         public async Task<TResponse> ExecuteAsync<TResponse>(IRequest<TResponse> command, CancellationToken cancellationToken)
         {
-            await using (DbTransaction dbTransaction = (await _dbContext.Database.BeginTransactionAsync(IsolationLevel.ReadCommitted, cancellationToken: cancellationToken)).GetDbTransaction())
+            await using (DbTransaction dbTransaction = (await _dbContext.Database.BeginTransactionAsync(IsolationLevel.ReadCommitted, cancellationToken)).GetDbTransaction())
             {
                 _messageStorageClient.UseTransaction(dbTransaction);
                 TResponse response = await _mediator.Send(command, cancellationToken);
