@@ -17,7 +17,7 @@ namespace RIG.OrderModule.Infrastructure.Db.EntityConfigurations
                                   guid => new OrderLineId(guid));
 
             builder.HasOne(m => m.Order)
-                   .WithMany("OrderLines")
+                   .WithMany(order => order.OrderLines)
                    .HasForeignKey(line => line.OrderId);
 
             builder.OwnsOne(m => m.OrderItem)
