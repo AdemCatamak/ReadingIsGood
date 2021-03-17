@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Shared\RIG.Shared.Domain\RIG.Shared.Domain.csproj" />
+      <ProjectReference Include="..\..\Shared\RIG.Shared.Specification\RIG.Shared.Specification.csproj" />
+    </ItemGroup>
+
+</Project>

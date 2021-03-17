@@ -7,7 +7,7 @@ namespace RIG.ProductModule.Infrastructure.Db.Migrations
     {
         public override void Up()
         {
-            Create.Table("Books").InSchema("dbo.Book")
+            Create.Table("Books").InSchema("dbo.Product")
                   .WithColumn("Id").AsGuid().PrimaryKey()
                   .WithColumn("BookName").AsString().NotNullable()
                   .WithColumn("AuthorName").AsString().NotNullable()
@@ -19,7 +19,7 @@ namespace RIG.ProductModule.Infrastructure.Db.Migrations
 
         public override void Down()
         {
-            Delete.Table("Books").InSchema("dbo.Book");
+            Delete.Table("Books").InSchema("dbo.Product");
         }
     }
 }

@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using RIG.Shared.Domain;
 using RIG.Shared.Domain.Outbox;
 using RIG.Shared.Infrastructure.Db;
 using RIG.Shared.Infrastructure.DomainEventBroker;
@@ -101,7 +102,7 @@ namespace RIG.Shared.Infrastructure
                                                                                                                                                          );
 
                                                                                                                             cfg.ConfigureEndpoints(provider);
-                                                                                                                            cfg.UseRetry(cfg, configurator => configurator.Interval(2, TimeSpan.FromSeconds(3)));
+                                                                                                                            cfg.UseRetry(cfg, configurator => configurator.Interval(3, TimeSpan.FromSeconds(3)));
                                                                                                                         });
 
                                                                                     return busControl;

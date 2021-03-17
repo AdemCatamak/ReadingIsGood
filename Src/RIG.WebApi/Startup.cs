@@ -13,8 +13,10 @@ using RIG.AccountModule.Application.Services;
 using RIG.AccountModule.Infrastructure;
 using RIG.ProductModule.Infrastructure;
 using RIG.Shared.Infrastructure;
-using RIG.WebApi.Controllers;
+using RIG.Shared.Infrastructure.MassTransitComponents;
+using RIG.StockModule.Infrastructure;
 using RIG.WebApi.Middleware;
+using RIG.WebApi.Modules;
 
 namespace RIG.WebApi
 {
@@ -93,11 +95,13 @@ namespace RIG.WebApi
                                   });
 
             #endregion
-            
+
+            services.AddSingleton<IIntegrationMessageConsumerAssembly, MassTransitConsumerAssembly>();
             CompositionRootRegisterer compositionRootRegisterer = new CompositionRootRegisterer(services, _configuration);
             compositionRootRegisterer.Registerer(new SharedCompositionRoot())
                                      .Registerer(new AccountModuleCompositionRoot())
-                                     .Registerer(new ProductModuleCompositionRoot());
+                                     .Registerer(new ProductModuleCompositionRoot())
+                                     .Registerer(new StockModuleCompositionRoot());
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

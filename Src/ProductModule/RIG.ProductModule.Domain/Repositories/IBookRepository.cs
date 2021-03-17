@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using RIG.ProductModule.Domain.ValueObjects;
 using RIG.Shared.Domain;
 using RIG.Shared.Domain.Pagination;
 using RIG.Shared.Specification.ExpressionSpecificationSection.Specifications;
