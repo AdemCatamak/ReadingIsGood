@@ -73,6 +73,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIG.OrderModule.Application
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RIG.OrderModule.Contracts", "Src\OrderModule\RIG.OrderModule.Contracts\RIG.OrderModule.Contracts.csproj", "{B72B2702-1B44-4354-B3ED-4012C353FFB4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{82CB3F9F-61C6-42B0-B824-E1E4651D44C6}"
+ProjectSection(SolutionItems) = preProject
+	ReadMe.md = ReadMe.md
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
