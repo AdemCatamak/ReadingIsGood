@@ -9,7 +9,6 @@
       <ProjectReference Include="..\OrderModule\RIG.OrderModule.Infrastructure\RIG.OrderModule.Infrastructure.csproj"/>
       <ProjectReference Include="..\ProductModule\RIG.ProductModule.Infrastructure\RIG.ProductModule.Infrastructure.csproj" />
       <ProjectReference Include="..\Shared\RIG.Shared.Infrastructure\RIG.Shared.Infrastructure.csproj" />
-      <ProjectReference Include="..\StockModule\RIG.StockModule.Application\RIG.StockModule.Application.csproj" />
       <ProjectReference Include="..\StockModule\RIG.StockModule.Infrastructure\RIG.StockModule.Infrastructure.csproj" />
     </ItemGroup>
 
