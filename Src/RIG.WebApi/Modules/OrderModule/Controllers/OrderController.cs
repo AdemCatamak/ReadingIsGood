@@ -77,6 +77,9 @@ namespace RIG.WebApi.Modules.OrderModule.Controllers
             return StatusCode((int) HttpStatusCode.OK, result);
         }
 
+        /// <summary>
+        /// Admin privileges required
+        /// </summary>
         [HttpPut("orders/{orderId}/shipped")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ChangeOrderStatus([FromRoute] Guid orderId)

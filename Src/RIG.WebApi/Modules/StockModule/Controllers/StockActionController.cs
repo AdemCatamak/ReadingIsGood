@@ -20,6 +20,9 @@ namespace RIG.WebApi.Modules.StockModule.Controllers
             _executionContext = executionContext;
         }
 
+        /// <summary>
+        /// Admin privileges required
+        /// </summary>
         [HttpPost("add-to-stock")]
         [ProducesResponseType((int) HttpStatusCode.OK)]
         public async Task<IActionResult> AddToStock([FromBody] AddToStockHttpRequest addToStockHttpRequest)
@@ -31,6 +34,9 @@ namespace RIG.WebApi.Modules.StockModule.Controllers
             return StatusCode((int) HttpStatusCode.OK);
         }
 
+        /// <summary>
+        /// Admin privileges required
+        /// </summary>
         [HttpPost("remove-from-stock")]
         [ProducesResponseType((int) HttpStatusCode.OK)]
         public async Task<IActionResult> RemoveFromStock([FromBody] RemoveFromStockHttpRequest removeFromStockHttpRequest)
@@ -42,6 +48,9 @@ namespace RIG.WebApi.Modules.StockModule.Controllers
             return StatusCode((int) HttpStatusCode.OK);
         }
 
+        /// <summary>
+        /// Admin privileges required
+        /// </summary>
         [HttpPost("reset-stock")]
         [ProducesResponseType((int) HttpStatusCode.OK)]
         public async Task<IActionResult> ResetStock([FromBody] ResetStockHttpRequest resetStockHttpRequest)

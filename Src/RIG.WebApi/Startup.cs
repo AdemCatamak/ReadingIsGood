@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -73,6 +76,9 @@ namespace RIG.WebApi
                                                                 });
 
                                        c.CustomSchemaIds(type => type.ToString());
+                                       var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                                       var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                                       c.IncludeXmlComments(xmlPath);
                                    });
 
             #region Auth

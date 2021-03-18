@@ -24,6 +24,9 @@ namespace RIG.WebApi.Modules.ProductModule.Controllers
             _executionContext = executionContext;
         }
 
+        /// <summary>
+        /// Admin privileges required
+        /// </summary>
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ProducesResponseType(typeof(Guid), (int) HttpStatusCode.Created)]
@@ -35,6 +38,9 @@ namespace RIG.WebApi.Modules.ProductModule.Controllers
             return StatusCode((int) HttpStatusCode.Created, bookId.Value);
         }
 
+        /// <summary>
+        /// Admin privileges required
+        /// </summary>
         [HttpDelete("{bookId}")]
         [Authorize(Roles = "Admin")]
         [ProducesResponseType((int) HttpStatusCode.OK)]
