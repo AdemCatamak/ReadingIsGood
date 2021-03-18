@@ -11,6 +11,7 @@ using RIG.OrderModule.Domain.ValueObjects;
 using RIG.Shared.Domain.Exceptions;
 using RIG.Shared.Domain.Pagination;
 using RIG.Shared.Infrastructure;
+using RIG.WebApi.Modules.OrderModule.Controllers.HttpValueObjects;
 using RIG.WebApi.Modules.OrderModule.Controllers.Requests;
 using RIG.WebApi.Modules.OrderModule.Controllers.Responses;
 
@@ -74,6 +75,15 @@ namespace RIG.WebApi.Modules.OrderModule.Controllers
                                                                                                                 }));
 
             return StatusCode((int) HttpStatusCode.OK, result);
+        }
+
+        [HttpPut("orders/{orderId}/shipped")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ChangeOrderStatus([FromRoute] Guid orderId)
+        {
+            SetOrderAsShippedCommand setOrderAsShippedCommand = new SetOrderAsShippedCommand(new OrderId(orderId));
+            await _executionContext.ExecuteAsync(setOrderAsShippedCommand, CancellationToken.None);
+            return StatusCode((int) HttpStatusCode.OK);
         }
     }
 }

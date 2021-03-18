@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using RIG.OrderModule.Contracts.IntegrationEvents;
@@ -18,8 +19,11 @@ namespace RIG.OrderModule.Application.DomainEventHandlers
 
         public async Task Handle(OrderCreatedEvent notification, CancellationToken cancellationToken)
         {
-            OrderCreatedIntegrationEvent orderCreatedIntegrationEvent = new OrderCreatedIntegrationEvent(notification.Order.Id);
-            await _outboxClient.AddAsync(orderCreatedIntegrationEvent, cancellationToken);
+            var order = notification.Order;
+            var orderSubmittedIntegrationEvent = new OrderSubmittedIntegrationEvent(order.Id,
+                                                                                    order.OrderLines.Select(line => line.OrderItem).ToList()
+                                                                                   );
+            await _outboxClient.AddAsync(orderSubmittedIntegrationEvent, cancellationToken);
         }
     }
 }

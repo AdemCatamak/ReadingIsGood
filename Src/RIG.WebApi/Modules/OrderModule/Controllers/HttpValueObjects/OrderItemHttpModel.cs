@@ -1,4 +1,4 @@
-namespace RIG.WebApi.Modules.OrderModule.Controllers.Requests
+namespace RIG.WebApi.Modules.OrderModule.Controllers.HttpValueObjects
 {
     public class OrderItemHttpModel
     {

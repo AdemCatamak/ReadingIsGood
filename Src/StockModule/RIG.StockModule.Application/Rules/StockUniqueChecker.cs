@@ -26,7 +26,7 @@ namespace RIG.StockModule.Application.Rules
             {
                 await stockRepository.GetFirstAsync(specification, cancellationToken);
             }
-            catch (StockNotFoundException e)
+            catch (StockNotFoundException)
             {
                 isUnique = true;
             }

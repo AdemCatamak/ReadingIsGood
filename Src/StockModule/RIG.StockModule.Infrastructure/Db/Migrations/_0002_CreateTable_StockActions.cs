@@ -16,7 +16,7 @@ namespace RIG.StockModule.Infrastructure.Db.Migrations
                   .WithColumn("CorrelationId").AsString().NotNullable()
                 ;
 
-            Create.Index("IX__Stock__StockActions__CorrelationId_StockActionType")
+            Create.Index("IX__Stock__StockActions__CorrelationId")
                   .OnTable("StockActions").InSchema("dbo.Stock")
                   .OnColumn("CorrelationId").Ascending()
                   .WithOptions().Unique()

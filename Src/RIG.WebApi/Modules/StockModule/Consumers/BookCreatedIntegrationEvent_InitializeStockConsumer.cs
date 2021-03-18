@@ -8,11 +8,11 @@ using RIG.StockModule.Application.Commands;
 
 namespace RIG.WebApi.Modules.StockModule.Consumers
 {
-    public class BookCreatedEvent_InitializeStockConsumer : IConsumer<BookCreatedIntegrationEvent>
+    public class BookCreatedIntegrationEvent_InitializeStockConsumer : IConsumer<BookCreatedIntegrationEvent>
     {
         private readonly IExecutionContext _executionContext;
 
-        public BookCreatedEvent_InitializeStockConsumer(IExecutionContext executionContext)
+        public BookCreatedIntegrationEvent_InitializeStockConsumer(IExecutionContext executionContext)
         {
             _executionContext = executionContext;
         }
@@ -27,11 +27,11 @@ namespace RIG.WebApi.Modules.StockModule.Consumers
         }
     }
 
-    public class BookCreatedEvent_InitializeStockConsumer_Definition : ConsumerDefinition<BookCreatedEvent_InitializeStockConsumer>
+    public class BookCreatedIntegrationEvent_InitializeStockConsumer_Definition : ConsumerDefinition<BookCreatedIntegrationEvent_InitializeStockConsumer>
     {
-        public BookCreatedEvent_InitializeStockConsumer_Definition()
+        public BookCreatedIntegrationEvent_InitializeStockConsumer_Definition()
         {
-            EndpointName = "StockModule.BookCreatedEvent_InitializeStockConsumerQueue";
+            EndpointName = "StockModule.BookCreatedIntegrationEvent_InitializeStockConsumerQueue";
         }
     }
 }

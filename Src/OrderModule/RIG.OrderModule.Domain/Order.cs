@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using RIG.OrderModule.Domain.Events;
+using RIG.OrderModule.Domain.Services;
 using RIG.OrderModule.Domain.ValueObjects;
 using RIG.Shared.Domain;
 
@@ -14,13 +14,9 @@ namespace RIG.OrderModule.Domain
         public OrderStatuses OrderStatus { get; private set; }
         public DateTime CreatedOn { get; private set; }
 
-        protected virtual ICollection<OrderLine> _orderLines { get; set; } = new List<OrderLine>();
+        private readonly List<OrderLine> _orderLines = new List<OrderLine>();
+        public IReadOnlyCollection<OrderLine> OrderLines => _orderLines;
 
-        public IReadOnlyCollection<OrderLine> OrderLines
-        {
-            get => (IReadOnlyCollection<OrderLine>) _orderLines;
-            private set => _orderLines = value.ToList();
-        }
 
         private Order(string accountId) : this
             (new OrderId(Guid.NewGuid()), accountId, OrderStatuses.Submitted, DateTime.UtcNow)
@@ -50,20 +46,21 @@ namespace RIG.OrderModule.Domain
             return order;
         }
 
-        public List<OrderItem> GetOrderLines()
+        public void ChangeOrderStatus(IOrderStateMachine orderStateMachine, OrderStatuses targetOrderStatus)
         {
-            List<OrderItem> result = _orderLines.Select(line => line.OrderItem)
-                                                .ToList();
-
-            return result;
+            var previousOrderStatus = OrderStatus;
+            orderStateMachine.ChangeOrderStatus(targetOrderStatus);
+            OrderStatus = targetOrderStatus;
+            OrderStatusChangedEvent orderStatusChangedEvent = OrderStatusChangedEvent.Create(previousOrderStatus, this);
+            AddDomainEvent(orderStatusChangedEvent);
         }
     }
 
     public enum OrderStatuses
     {
         Submitted = 1,
-        InsufficientStock = 2,
-        WaitingForAdminApproval = 3,
-        Approved = 4
+        OrderNotFulfilled = 2,
+        OrderFulfilled = 3,
+        Shipped = 4,
     }
 }

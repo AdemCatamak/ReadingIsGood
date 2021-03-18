@@ -1,5 +1,5 @@
 ﻿using System;
-using RIG.Shared.Domain;
+using RIG.Shared.Domain.IIntegrationMessages;
 
 namespace RIG.StockModule.Contracts
 {

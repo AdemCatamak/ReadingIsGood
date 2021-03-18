@@ -8,11 +8,11 @@ using RIG.StockModule.Application.Commands;
 
 namespace RIG.WebApi.Modules.StockModule.Consumers
 {
-    public class BookDeletedEvent_ResetStockConsumer : IConsumer<BookDeletedIntegrationEvent>
+    public class BookDeletedIntegrationEvent_ResetStockConsumer : IConsumer<BookDeletedIntegrationEvent>
     {
         private readonly IExecutionContext _executionContext;
 
-        public BookDeletedEvent_ResetStockConsumer(IExecutionContext executionContext)
+        public BookDeletedIntegrationEvent_ResetStockConsumer(IExecutionContext executionContext)
         {
             _executionContext = executionContext;
         }
@@ -26,11 +26,11 @@ namespace RIG.WebApi.Modules.StockModule.Consumers
         }
     }
 
-    public class BookDeletedEvent_ResetStockConsumer_Definition : ConsumerDefinition<BookDeletedEvent_ResetStockConsumer>
+    public class BookDeletedIntegrationEvent_ResetStockConsumer_Definition : ConsumerDefinition<BookDeletedIntegrationEvent_ResetStockConsumer>
     {
-        public BookDeletedEvent_ResetStockConsumer_Definition()
+        public BookDeletedIntegrationEvent_ResetStockConsumer_Definition()
         {
-            EndpointName = "StockModule.BookDeletedEvent_ResetStockConsumerQueue";
+            EndpointName = "StockModule.BookDeletedIntegrationEvent_ResetStockConsumerQueue";
         }
     }
 }
