@@ -43,11 +43,19 @@ namespace RIG.Shared.Infrastructure
                                            messageStorage.UseSqlServer(appDbConfig.ConnectionStr)
                                                          .UseHandlers((handlerManager, provider) =>
                                                                       {
-                                                                          handlerManager.TryAddHandler(new HandlerDescription<IntegrationMessageHandler>
+                                                                          handlerManager.TryAddHandler(new HandlerDescription<IntegrationEventHandler>
                                                                                                            (() =>
                                                                                                             {
                                                                                                                 var x = provider.GetRequiredService<IBusControl>();
-                                                                                                                return new IntegrationMessageHandler(x);
+                                                                                                                return new IntegrationEventHandler(x);
+                                                                                                            })
+                                                                                                      );
+
+                                                                          handlerManager.TryAddHandler(new HandlerDescription<IntegrationCommandHandler>
+                                                                                                           (() =>
+                                                                                                            {
+                                                                                                                var x = provider.GetRequiredService<IBusControl>();
+                                                                                                                return new IntegrationCommandHandler(x);
                                                                                                             })
                                                                                                       );
                                                                       });

@@ -45,5 +45,11 @@ namespace RIG.Shared.Infrastructure
                 return response;
             }
         }
+
+        public void Dispose()
+        {
+            _dbContext?.Dispose();
+            _messageStorageClient?.Dispose();
+        }
     }
 }

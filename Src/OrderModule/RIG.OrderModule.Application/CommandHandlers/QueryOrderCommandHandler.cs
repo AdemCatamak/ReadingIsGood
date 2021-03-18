@@ -28,7 +28,7 @@ namespace RIG.OrderModule.Application.CommandHandlers
 
             PaginatedCollection<OrderResponse> result = new PaginatedCollection<OrderResponse>(order.TotalCount,
                                                                                                order.Data
-                                                                                                    .Select(x => new OrderResponse(x.Id, x.OrderStatus, x.GetOrderLines())));
+                                                                                                    .Select(x => new OrderResponse(x.Id, x.OrderStatus, x.OrderLines.Select(line => line.OrderItem).ToList())));
 
             return result;
         }

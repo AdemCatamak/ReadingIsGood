@@ -10,4 +10,8 @@
         <ProjectReference Include="..\RIG.OrderModule.Domain\RIG.OrderModule.Domain.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="stateless" Version="5.10.1"/>
+    </ItemGroup>
+
 </Project>

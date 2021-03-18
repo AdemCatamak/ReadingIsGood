@@ -27,6 +27,12 @@ namespace RIG.OrderModule.Infrastructure.Db.Repositories
             await _appDbContext.AddAsync(order, cancellationToken);
         }
 
+        public async Task<Order> GetFirstAsync(IExpressionSpecification<Order> specification, CancellationToken cancellationToken)
+        {
+            var paginatedCollection = await GetAsync(specification, 0, 1, cancellationToken);
+            return paginatedCollection.Data.First();
+        }
+
         public Task<PaginatedCollection<Order>> GetAsync(IExpressionSpecification<Order> specification, int offset, int limit, CancellationToken cancellationToken)
         {
             return GetAsync(specification, offset, limit, OrderBy<Order>.Asc(x => x.CreatedOn), cancellationToken);

@@ -5,10 +5,10 @@ namespace RIG.OrderModule.Domain
 {
     public class OrderLine
     {
-        public OrderLineId Id { get; private set; }
-        public OrderId OrderId { get; private set; }
-        public virtual Order Order { get; private set; }
-        public OrderItem OrderItem { get; private set; }
+        public OrderLineId Id { get; private set; } = null!;
+        public OrderId OrderId { get; set; }
+        public virtual Order Order { get; private set; } = null!;
+        public OrderItem OrderItem { get; private set; } = null!;
 
         private OrderLine()
         {

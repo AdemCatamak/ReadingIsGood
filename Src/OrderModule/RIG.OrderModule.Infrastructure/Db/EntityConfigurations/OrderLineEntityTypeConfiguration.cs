@@ -16,10 +16,6 @@ namespace RIG.OrderModule.Infrastructure.Db.EntityConfigurations
                    .HasConversion(id => id.Value,
                                   guid => new OrderLineId(guid));
 
-            builder.HasOne(m => m.Order)
-                   .WithMany(order => order.OrderLines)
-                   .HasForeignKey(line => line.OrderId);
-
             builder.OwnsOne(m => m.OrderItem)
                    .Property(item => item.ProductId)
                    .HasColumnName("ProductId");

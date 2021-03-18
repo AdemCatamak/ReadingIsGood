@@ -7,7 +7,7 @@ namespace RIG.OrderModule.Infrastructure.Db.Migrations
     {
         public override void Up()
         {
-            Create.Table("OrderItems").InSchema("dbo.Order")
+            Create.Table("OrderLines").InSchema("dbo.Order")
                   .WithColumn("Id").AsGuid().PrimaryKey()
                   .WithColumn("OrderId").AsGuid().NotNullable().ForeignKey("FK__OrderLine_OrderId__Order_Id", "dbo.Order", "Orders", "Id")
                   .WithColumn("ProductId").AsString().NotNullable()
@@ -17,7 +17,7 @@ namespace RIG.OrderModule.Infrastructure.Db.Migrations
 
         public override void Down()
         {
-            Delete.Table("OrderItems").InSchema("dbo.Order");
+            Delete.Table("OrderLines").InSchema("dbo.Order");
         }
     }
 }

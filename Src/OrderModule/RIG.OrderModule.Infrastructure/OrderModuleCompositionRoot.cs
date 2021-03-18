@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RIG.OrderModule.Application.CommandHandlers;
+using RIG.OrderModule.Application.Services;
 using RIG.OrderModule.Domain.Repositories;
+using RIG.OrderModule.Domain.Services;
 using RIG.OrderModule.Infrastructure.Db;
 using RIG.OrderModule.Infrastructure.Db.EntityConfigurations;
 using RIG.OrderModule.Infrastructure.Db.Migrations;
@@ -20,6 +22,8 @@ namespace RIG.OrderModule.Infrastructure
             services.AddSingleton<IEntityTypeConfigurationAssembly, OrderModuleTypeConfigurationAssembly>();
             services.AddSingleton<BaseDbMigrationEngine, OrderModuleMigrationRunner>();
             services.AddScoped<IOrderDbContext, OrderDbContext>();
+
+            services.AddScoped<IOrderStateMachineFactory, OrderStateMachineFactory>();
         }
     }
 }

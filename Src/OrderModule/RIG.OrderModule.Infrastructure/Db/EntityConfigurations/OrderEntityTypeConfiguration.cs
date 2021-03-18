@@ -21,6 +21,14 @@ namespace RIG.OrderModule.Infrastructure.Db.EntityConfigurations
                    .HasColumnName("OrderStatus");
             builder.Property(m => m.CreatedOn)
                    .HasColumnName("CreatedOn");
+
+            builder.HasMany(x => x.OrderLines)
+                   .WithOne(line => line.Order)
+                   .HasForeignKey(x => x.OrderId);
+
+            builder.Metadata
+                   .FindNavigation(nameof(Order.OrderLines))
+                   .SetPropertyAccessMode(PropertyAccessMode.Field);
         }
     }
 }
