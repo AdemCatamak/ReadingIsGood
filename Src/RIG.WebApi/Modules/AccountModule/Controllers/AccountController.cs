@@ -40,6 +40,9 @@ namespace RIG.WebApi.Modules.AccountModule.Controllers
             return StatusCode((int) HttpStatusCode.Created, accountId.Value);
         }
 
+        /// <summary>
+        /// Admin privileges required
+        /// </summary>
         [HttpGet]
         [ProducesResponseType(typeof(PaginatedCollection<AccountHttpResponse>), (int) HttpStatusCode.OK)]
         [Authorize(Roles = "Admin")]
@@ -64,6 +67,9 @@ namespace RIG.WebApi.Modules.AccountModule.Controllers
             return StatusCode((int) HttpStatusCode.OK, result);
         }
 
+        /// <summary>
+        /// Only admin can enter someone else's id
+        /// </summary>
         [HttpGet("{accountId}")]
         [ProducesResponseType(typeof(AccountHttpResponse), (int) HttpStatusCode.OK)]
         public async Task<IActionResult> GetAccount([FromRoute] Guid accountId)
