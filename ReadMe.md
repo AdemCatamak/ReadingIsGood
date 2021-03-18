@@ -1,4 +1,4 @@
-# Reading Is Good
+# Reading Is Good ![.github/workflows/github.yml](https://github.com/AdemCatamak/ReadingIsGood/workflows/.github/workflows/github.yml/badge.svg?branch=master)
 
 This project contains Account, Product, Stock and Order domains which are important for e-commerce.
 
