@@ -25,7 +25,7 @@ namespace RIG.WebApi.Modules.StockModule.Controllers
         /// </summary>
         [HttpPost("add-to-stock")]
         [ProducesResponseType((int) HttpStatusCode.OK)]
-        public async Task<IActionResult> AddToStock([FromBody] AddToStockHttpRequest addToStockHttpRequest)
+        public async Task<IActionResult> AddToStock([FromBody] AddToStockHttpRequest? addToStockHttpRequest)
         {
             AddToStockCommand addToStockCommand = new AddToStockCommand(addToStockHttpRequest?.ProductId ?? string.Empty,
                                                                         addToStockHttpRequest?.Count ?? 0,
@@ -39,7 +39,7 @@ namespace RIG.WebApi.Modules.StockModule.Controllers
         /// </summary>
         [HttpPost("remove-from-stock")]
         [ProducesResponseType((int) HttpStatusCode.OK)]
-        public async Task<IActionResult> RemoveFromStock([FromBody] RemoveFromStockHttpRequest removeFromStockHttpRequest)
+        public async Task<IActionResult> RemoveFromStock([FromBody] RemoveFromStockHttpRequest? removeFromStockHttpRequest)
         {
             RemoveFromStockCommand removeFromStockCommand = new RemoveFromStockCommand(removeFromStockHttpRequest?.ProductId ?? string.Empty,
                                                                                        removeFromStockHttpRequest?.Count ?? 0,
@@ -53,7 +53,7 @@ namespace RIG.WebApi.Modules.StockModule.Controllers
         /// </summary>
         [HttpPost("reset-stock")]
         [ProducesResponseType((int) HttpStatusCode.OK)]
-        public async Task<IActionResult> ResetStock([FromBody] ResetStockHttpRequest resetStockHttpRequest)
+        public async Task<IActionResult> ResetStock([FromBody] ResetStockHttpRequest? resetStockHttpRequest)
         {
             var resetStockCommand = new ResetStockCommand(resetStockHttpRequest?.ProductId ?? string.Empty,
                                                           resetStockHttpRequest?.CorrelationId ?? string.Empty);
